@@ -1,0 +1,21 @@
+.page-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 36px;
+  border-top: 1px solid #e0ddd7;
+}
+
+.footer-coord,
+.footer-season {
+  font-family: 'DM Mono', 'Courier New', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  color: #aaa;
+  font-weight: 300;
+}
+
+.footer-season {
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+}

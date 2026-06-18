@@ -1,0 +1,103 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique
+  passwordHash  String
+  role          Role           @default(ADMIN)
+  refreshTokens RefreshToken[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Product {
+  id            String      @id @default(uuid())
+  slug          String      @unique
+  name          String
+  description   String
+  category      String
+  collection    String
+  brand         String      @default("BLACKSNOW")
+  price         Float
+  currency      String      @default("GBP")
+  discountType  String?
+  discountValue Float?
+  finalPrice    Float
+  stockStatus   String      @default("in_stock")
+  stockQuantity Int         @default(0)
+  isNew         Boolean     @default(false)
+  isFeatured    Boolean     @default(false)
+  tags          String[]
+  sizes         String[]
+  colors        Json        // [{ name: string; hexCode: string }]
+  images        Json        // [{ id: string; url: string; alt: string; publicId: string }]
+  rating        Float       @default(0)
+  reviewCount   Int         @default(0)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  orderItems OrderItem[]
+}
+
+model Order {
+  id            String      @id @default(uuid())
+  email         String
+  firstName     String
+  lastName      String
+  address       String
+  address2      String?
+  city          String
+  postcode      String
+  country       String      @default("United Kingdom")
+  phone         String
+  totalAmount   Float
+  currency      String      @default("GBP")
+  status        OrderStatus @default(PENDING)
+  paymentMethod String?
+  items         OrderItem[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model OrderItem {
+  id            String  @id @default(uuid())
+  orderId       String
+  order         Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId     String
+  product       Product @relation(fields: [productId], references: [id])
+  productName   String
+  selectedSize  String
+  selectedColor String
+  quantity      Int
+  unitPrice     Float
+  totalPrice    Float
+}

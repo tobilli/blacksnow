@@ -1,0 +1,46 @@
+.ticker-wrap {
+  position: absolute;
+  bottom: 52px;
+  left: 0;
+  width: 100%;
+  z-index: 15;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  animation: fadeIn 1s ease 2.6s forwards;
+}
+
+.ticker {
+  display: flex;
+  white-space: nowrap;
+  animation: tickerScroll 28s linear infinite;
+}
+
+.ticker-item {
+  font-family: 'DM Mono', 'Courier New', monospace;
+  font-size: 0.45rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #c8c3bb;
+  font-weight: 300;
+  padding: 0 2.5rem;
+}
+
+.ticker-item::before {
+  content: '— ';
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes tickerScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

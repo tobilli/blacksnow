@@ -1,0 +1,73 @@
+{
+  "status": "success",
+  "metadata": {
+    "totalCount": 1,
+    "currentPage": 1,
+    "perPage": 10,
+    "totalPages": 1,
+    "hasNextPage": false,
+    "hasPreviousPage": false
+  },
+  "data": [
+    {
+      "id": "prod_87439A",
+      "slug": "minimus-cap-black",
+      "name": "MINIMUS CAP",
+      "description": "Premium minimalist cap with adjustable strap.",
+      "category": "caps",
+      "collection": "summer-drop",
+      "brand": "BLACKSNOW",
+
+      "price": 299.99,
+      "currency": "GBP",
+
+      "discount": {
+        "type": "percentage",
+        "value": 10
+      },
+
+      "finalPrice": 269.99,
+
+      "stockStatus": "in_stock",
+      "stockQuantity": 32,
+
+      "isNew": true,
+      "isFeatured": false,
+
+      "tags": ["minimal", "streetwear", "cap"],
+
+      "variants": {
+        "sizes": ["S", "M", "L"],
+        "colors": [
+          {
+            "name": "Black",
+            "hexCode": "#000000"
+          },
+          {
+            "name": "White",
+            "hexCode": "#FFFFFF"
+          }
+        ]
+      },
+
+      "images": [
+        {
+          "id": "img_01",
+          "url": "https://cdn.blacksnow.com/products/cap-black-front.jpg",
+          "alt": "Front view of MINIMUS CAP"
+        },
+        {
+          "id": "img_02",
+          "url": "https://cdn.blacksnow.com/products/cap-black-side.jpg",
+          "alt": "Side view of MINIMUS CAP"
+        }
+      ],
+
+      "rating": 4.7,
+      "reviewCount": 128,
+
+      "createdAt": "2026-05-28T12:00:00Z",
+      "updatedAt": "2026-05-28T12:00:00Z"
+    }
+  ]
+}
